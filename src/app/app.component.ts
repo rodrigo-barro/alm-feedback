@@ -19,6 +19,8 @@ import { SupportPage } from '../pages/support/support';
 import { ConferenceData } from '../providers/conference-data';
 import { UserData } from '../providers/user-data';
 
+import { HockeyApp } from 'ionic-hockeyapp';
+
 export interface PageInterface {
   title: string;
   name: string;
@@ -66,7 +68,8 @@ export class ConferenceApp {
     public platform: Platform,
     public confData: ConferenceData,
     public storage: Storage,
-    public splashScreen: SplashScreen
+    public splashScreen: SplashScreen,
+    public hockeyapp:HockeyApp
   ) {
 
     // Check if the user has already seen the tutorial
@@ -147,6 +150,7 @@ export class ConferenceApp {
     // Call any initial plugins when ready
     this.platform.ready().then(() => {
       this.splashScreen.hide();
+      this.hockeyapp.start("f8576ea2611846c28a4c096f209e4c84", null, true, false);
     });
   }
 
